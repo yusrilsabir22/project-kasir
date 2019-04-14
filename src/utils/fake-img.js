@@ -3,51 +3,51 @@ export const menu = [
     {
         name: "Ikan Asing",
         img: "https://img-global.cpcdn.com/003_recipes/560209f6e542e02f/1200x630cq70/photo.jpg",
-        cost: "IDR 5K"
+        cost: "5K"
     },
     {
         name: "Pepes Ikan",
         img: "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/sasefoto/original/31452_pepes-ikan.jpg",
-        cost: "IDR 20K"
+        cost: "20K"
     },
     {
         name: "Nasi Putih",
         img: "http://thediffrestaurant.com/webstore/wp-content/uploads/nasi-putih-1.jpg",
-        cost: "IDR 6K"
+        cost: "6K"
     },
     {
         name: "Nasi Timbel",
         img: "http://photos1.blogger.com/img/245/952/640/nasitimbel.jpg",
-        cost: "IDR 8K"
+        cost: "8K"
     },
     {
         name: "Ayam Goreng",
         img: "http://www.dapurkobe.co.id/wp-content/uploads/ayam-goreng-pedas.jpg",
-        cost: "IDR 21K"
+        cost: "21K"
     }, {
         name: "Ayam Bakar",
         img: "https://doyanresep.com/wp-content/uploads/2018/12/cara-membuat-ayam-bakar-kecap.jpg",
-        cost: "IDR 21K"
+        cost: "21K"
     }, {
         name: "Gepuk",
         img: "http://kelanamakan.com/wp-content/uploads/2016/08/gepuk-2.jpg",
-        cost: "IDR 20K"
+        cost: "20K"
     }, {
         name: "Tahu",
         img: "https://reseponline.info/wp-content/uploads/2014/01/Resep-Membuat-Tahu-Kuning-Goreng.jpg",
-        cost: "IDR 3K"
+        cost: "3K"
     }, {
         name: "Tempe",
         img: "https://media-cdn.tripadvisor.com/media/photo-s/0e/bb/aa/55/tempe-goreng.jpg",
-        cost: "IDR 3K"
+        cost: "3K"
     }, {
         name: "Pete",
         img: "https://supermilan.files.wordpress.com/2012/03/balado-pete.jpg?w=1200&h=275",
-        cost: "IDR 10K"
+        cost: "10K"
     }, {
         name: "Jengkol Goreng",
         img: "https://ecs7.tokopedia.net/img/cache/700/product-1/2018/6/16/25326152/25326152_559eaa47-6da7-4fde-8ae4-f1e06a1f778b_1080_1080.jpg",
-        cost: "IDR 10K"
+        cost: "10K"
     }
 
 ]

@@ -34,7 +34,7 @@ const routes = [
 ]
 
 const MRoutes = (route) => {
-    console.log(route)
+
     return (
         <React.Fragment>
         <Route

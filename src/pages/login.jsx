@@ -14,6 +14,13 @@ export default class LoginPage extends Component {
             this.props.history.replace("/");
         }
     }
+
+    componentWillReceiveProps(props, state) {
+        !props.auth ?
+        window.alert(props.message) :
+        location.reload()
+    }
+
     
   render() {
     return (

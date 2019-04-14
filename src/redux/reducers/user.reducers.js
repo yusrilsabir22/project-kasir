@@ -1,7 +1,8 @@
 import { AUTH_SUCCESS } from "../types";
 
 const initialState = {
-    auth: false
+    auth: false,
+    admin: false
 }
 
 const userReducers = (state = initialState, action) => {

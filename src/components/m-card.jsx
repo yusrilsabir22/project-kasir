@@ -3,7 +3,7 @@ import { cilok } from '../utils/fake-img';
 
 export const MenuCard = (props) => {
     return (
-      <div className="card">
+      <div className="card" key={props.id}>
         <img
           className="card-img-top"
           src={props.img ? props.img : cilok}
@@ -13,12 +13,12 @@ export const MenuCard = (props) => {
           }}
         />
         <div className="card-body">
-          <div className="card-title font-weight-bold">{props.name ? props.name : 'none'}</div>
+          <div className="card-title font-weight-bold">{props.nama ? props.nama : 'none'}</div>
           <p className="card-text">
-            {props.desc ? props.desc : 'Some quick example text to build on the card.'}
+            {props.stok ? 'Stok ' + props.stok : 'Habis'}
           </p>
         <div className="card-footer">
-            <div className="card-text font-weight-bold">{props.cost ? props.cost : 'IDR 0'}</div>
+            <div className="card-text font-weight-bold">{props.harga ? 'IDR ' + props.harga : 'IDR 0'}</div>
         </div>
         </div>
       </div>

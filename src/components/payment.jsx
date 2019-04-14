@@ -8,7 +8,7 @@ export default class Payment extends Component {
         <div className="payment garis w-100 navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="navbar-nav">
             <div className="nav-item font-weight-light">Wed, Jul 22, 2019<br/>10.48</div>
-            <div className="nav-item font-weight-light">Marry Doe</div>
+            <div className="nav-item font-weight-light">{localStorage.getItem('nama')}</div>
             <button className="btn btn-primary nav-item" onClick={(e) => {
               location.replace('/')
               localStorage.clear()
@@ -24,7 +24,7 @@ export default class Payment extends Component {
           <div className="col-md-4">
             <span className="text-secondary">Name</span>
             <br />
-            <span className="text-white">John Doe</span>
+            <span className="text-white">Marry Doe</span>
           </div>
           <div className="col-md-4">
             <span className="text-secondary">Table</span>

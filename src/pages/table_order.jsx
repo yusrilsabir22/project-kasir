@@ -60,13 +60,13 @@ export default class TableOrders extends Component {
   };
   
   render() {
-    const mCustomers = this.customers.map(v => {
+    const mCustomers = this.customers.map((v,i) => {
       return (
         <div className="col-md-3" onClick={(e) => {
           this.setState({cli:v.id})
         }}>
           <Card
-            key={v.id}
+            key={i}
             id={v.id}
             table={v.table}
             name={v.name}

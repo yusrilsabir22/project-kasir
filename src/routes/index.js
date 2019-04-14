@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import {
     BrowserRouter as Router,
-    Switch
+    Switch,
+    Route
 } from 'react-router-dom'
 import { routes, MRoutes } from './config';
 import Navbars from '../components/navbars';
+import MenuOrders from '../pages/menu';
 
 export default class MainRoutes extends Component {
   render() {
@@ -13,8 +15,19 @@ export default class MainRoutes extends Component {
           <React.Fragment>
             {
               this.props.auth ?
-              <Navbars/> : null
+              this.props.admin ? 
+              null
+              : <Navbars/> : null
             }
+            {
+              this.props.admin ?
+              <Route
+                exact={true}
+                path={'/'}
+                render={props => {
+                  return <MenuOrders props={props} /> 
+                }}
+              /> :
               <Switch>
                   {
                       routes.map((route, i) => {
@@ -28,6 +41,7 @@ export default class MainRoutes extends Component {
                       })
                   }
               </Switch>
+            }
           </React.Fragment>
       </Router>
     )

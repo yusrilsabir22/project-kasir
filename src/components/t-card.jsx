@@ -1,6 +1,6 @@
 import React from 'react';
 export const Card = (props) => {
-    console.log(props)
+    
     return (
         <div className={`card ${props.clicked === props.id ? 'text-white bg-primary' : 'text-secondary bg-white'}`}>
             <div className="card-body">
