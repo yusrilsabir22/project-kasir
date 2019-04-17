@@ -21,13 +21,23 @@ export default class MainRoutes extends Component {
             }
             {
               this.props.admin ?
+              <React.Fragment>
+
               <Route
                 exact={true}
                 path={'/'}
                 render={props => {
                   return <MenuOrders props={props} /> 
                 }}
-              /> :
+                />
+              <Route
+               path={'/login'}
+               render={props => {
+                 return <LoginPage props={props} />
+               }}
+               />
+              </React.Fragment>
+              :
               <Switch>
                   {
                       routes.map((route, i) => {

@@ -4,6 +4,12 @@ import { cilok } from '../utils/fake-img';
 export const MenuCard = (props) => {
     return (
       <div className="card" key={props.id}>
+        <div className="d-item">
+          <button className="btn btn-primary">
+            U
+          </button>
+        <button className="btn btn-danger">X</button>
+        </div>
         <img
           className="card-img-top"
           src={props.img ? props.img : cilok}
