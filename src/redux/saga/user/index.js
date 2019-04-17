@@ -4,7 +4,7 @@ import {
     takeLatest
 } from "redux-saga/effects";
 import { auth } from "./user.api";
-import { SIGN_IN, AUTH_SUCCESS, CHECK_AUTH } from "../../types";
+import { SIGN_IN, AUTH_SUCCESS, CHECK_AUTH, AUTH_FAILED } from "../../types";
 
 function* login (action) {
     try {
@@ -26,12 +26,10 @@ function* login (action) {
                 yield put({type: AUTH_SUCCESS, payload: {auth: true, ...response}})
             }
         } else {
-            console.log({...error.response.data})
             yield put({
-                type: AUTH_SUCCESS, 
+                type: AUTH_FAILED, 
                 payload: {
-                    ...error.response.data,
-                    messageUser: error.response.data.message
+                    message: error.response.data.message
                 }
             })
         }

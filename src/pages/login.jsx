@@ -6,10 +6,12 @@ export default class LoginPage extends Component {
     
       this.state = {
          username: '',
-         password: ''
+         password: '',
+         auth: false
       }
     }
     componentDidMount() {
+        console.log(this.props)
         if(this.props.auth) {
             this.props.history.replace("/");
         }
