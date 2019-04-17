@@ -22,11 +22,19 @@ function* login (action) {
                         ...response
                     }
                 })
+            } else {
+                yield put({type: AUTH_SUCCESS, payload: {auth: true, ...response}})
             }
-            yield put({type: AUTH_SUCCESS, payload: {auth: true, ...response}})
+        } else {
+            console.log({...error.response.data})
+            yield put({
+                type: AUTH_SUCCESS, 
+                payload: {
+                    ...error.response.data,
+                    messageUser: error.response.data.message
+                }
+            })
         }
-        
-        yield put({type: AUTH_SUCCESS, payload: {...error.response.data}})
     } catch (error) {}
 }
 

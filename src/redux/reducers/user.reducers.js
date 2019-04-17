@@ -2,7 +2,9 @@ import { AUTH_SUCCESS } from "../types";
 
 const initialState = {
     auth: false,
-    admin: false
+    admin: false,
+    messageUser: '',
+    status: 401
 }
 
 const userReducers = (state = initialState, action) => {

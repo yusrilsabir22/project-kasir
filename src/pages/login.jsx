@@ -17,7 +17,7 @@ export default class LoginPage extends Component {
 
     componentWillReceiveProps(props, state) {
         !props.auth ?
-        window.alert(props.message) :
+        window.alert(props.messageUser) :
         location.reload()
     }
 
