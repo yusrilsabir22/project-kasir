@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { cilok } from '../utils/fake-img';
+import { splitRupiah } from '../utils/utils';
 
 export const MenuCard = (props) => {
     return (
       <div className="card" key={props.id}>
         <div className="d-item">
-          <button className="btn btn-primary">
-            U
-          </button>
-        <button className="btn btn-danger">X</button>
+          <i className="fas fa-plus"></i>
         </div>
         <img
           className="card-img-top"
@@ -24,7 +22,7 @@ export const MenuCard = (props) => {
             {props.stok ? 'Stok ' + props.stok : 'Habis'}
           </p>
         <div className="card-footer">
-            <div className="card-text font-weight-bold">{props.harga ? 'IDR ' + props.harga : 'IDR 0'}</div>
+            <div className="card-text font-weight-bold">{splitRupiah(props.harga, 'Rp')}</div>
         </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import {
 import { routes, MRoutes } from './config';
 import Navbars from '../components/navbars';
 import MenuOrders from '../pages/menu';
+import Sidebars from '../components/sidebars';
 
 export default class MainRoutes extends Component {
   render() {
@@ -17,7 +18,15 @@ export default class MainRoutes extends Component {
               this.props.auth ?
               this.props.admin ? 
               null
-              : <Navbars/> : null
+              : 
+              <React.Fragment>
+                < Navbars {
+                  ...this.props
+                }
+                />
+                <Sidebars {...this.props}/>
+              </React.Fragment>
+               : null
             }
             {
               this.props.admin ?

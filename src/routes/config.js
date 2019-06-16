@@ -11,20 +11,16 @@ import { checkAuthenticated } from '../utils/auth';
 const routes = [
     {
         path: '/',
-        component: checkAuthenticated(TableOrders),
+        component: checkAuthenticated(OrderStatus),
         exact: true
     },
     {
-        path: '/menu-orders',
+        path: '/makanan',
         component: checkAuthenticated(MenuOrders),
         exact: true
     },
     {
-        path: '/table-orders',
-        component: checkAuthenticated(TableOrders),
-    },
-    {
-        path: '/orders',
+        path: '/pelanggan',
         component: checkAuthenticated(OrderStatus),
     },
     {

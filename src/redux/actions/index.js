@@ -1,4 +1,4 @@
-import { SIGN_IN, AUTH_SUCCESS, CHECK_AUTH, GET_MENUS, ADD_MENU } from "../types";
+import { SIGN_IN, AUTH_SUCCESS, CHECK_AUTH, GET_MENUS, ADD_MENU, ORDERS_MENUS, EDIT_TYPES, ADD_CUSTOMER, REMOVE_MENUS, EDIT_CUSTOMER } from "../types";
 
 export const signIn = (payload) => {
     return {
@@ -29,6 +29,48 @@ export const getAllMenu = () => {
 export const addNewMenu = payload => {
     return {
         type: ADD_MENU,
+        payload
+    }
+}
+
+export const toggleNav = payload => {
+    return {
+        type: "TOGGLE_NAV",
+        payload
+    }
+}
+
+export const addCustomer = payload => {
+    return {
+        type: ADD_CUSTOMER,
+        payload
+    }
+}
+
+export const editOrders = payload => {
+    return {
+        type: EDIT_TYPES,
+        payload
+    }
+}
+
+export const addOrdersMenu = payload => {
+    return {
+        type: ORDERS_MENUS,
+        payload
+    }
+}
+
+export const removeMenus = (payload) => {
+    return {
+        type: REMOVE_MENUS,
+        payload
+    }
+}
+
+export const editCustomer = payload => {
+    return {
+        type: EDIT_CUSTOMER,
         payload
     }
 }

@@ -1,0 +1,94 @@
+.sidenav {
+    position: fixed;
+    width: 180px;
+    height: 100%;
+    min-height: 100%;
+    padding-top: 1.5em;
+    top: 47px;
+    left: 0;
+    transition: .3s transform linear;
+    z-index: 9000;
+
+    .side-content {
+        height: 80%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        line-height: 2;
+
+        .side-item {
+            display: flex;
+            flex-direction: column;
+
+            .side-link {
+                color: rgb(236, 231, 231);
+                padding: 2em 2em 0;
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                font-size: .8em;
+                cursor: pointer;
+
+                span {
+                    position: relative;
+                    top: -20px;
+                    left: 30px;
+
+                    .fa-angle-right,
+                    .fa-angle-down {
+                        position: relative;
+                        top: 1px;
+                    }
+                }
+            }
+
+        }
+
+        .side-item:hover {
+            background: rgb(38, 157, 179);
+            color: rgb(236, 231, 231);
+
+            .side-link {
+                color: rgb(236, 231, 231);
+
+                span,
+                i {
+                    color: rgb(236, 231, 231);
+                }
+            }
+        }
+
+    }
+
+    // .active {
+    //     background: rgb(38, 157, 179);
+    //     color: rgb(236, 231, 231);
+
+    //     .side-link {
+    //         color: rgb(236, 231, 231);
+
+    //         span,
+    //         i {
+    //             color: rgb(236, 231, 231);
+    //         }
+    //     }
+    // }
+}
+
+.slideIn {
+    transform: translateX(-100%)
+}
+
+
+.side-active {
+    background: rgb(38, 157, 179);
+    color: rgb(236, 231, 231);
+
+    .side-link {
+        color: rgb(236, 231, 231);
+
+        span,
+        i {
+            color: rgb(236, 231, 231);
+        }
+    }
+}

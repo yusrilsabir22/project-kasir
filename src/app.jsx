@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
-import Payment from './components/payment';
+import Payments from './pages/payment';
 import MainRoutes from './routes';
-import { signIn, checkAuth, getAllMenu, addNewMenu } from './redux/actions';
+import { signIn, checkAuth, getAllMenu, addNewMenu, toggleNav, addOrdersMenu, editOrders, addCustomer, removeMenus, editCustomer } from './redux/actions';
 import AdminPage from './pages/admin';
 import MenuOrders from './pages/menu';
+import RegisterCustomer from './components/register.customer';
 
 class App extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
                                         <MenuOrders {...this.props} />
                                     </div>
                                 </div>
-                                <div className="col-md-4 bg-dark fixed-right">
+                                <div className="col-md-3 bg-dark fixed-right">
                                     <div className="text-light">
                                         <AdminPage {...this.props} />
                                     </div>
@@ -36,14 +37,19 @@ class App extends Component {
                             </div>
                     :
                     <div className="d-md-flex h-md-100">
-                        <div className="p-0 col-md-8 bg-indigo h-md-100">                
-                            <div className="content-body container">
+                        <div className="p-0 col-md-9 bg-indigo h-md-100">
+                            <div className={`container${!this.props.nav ? ' content-body-nav' : ' content-body'}`}>
                             <MainRoutes {...this.props} />
                             </div>
                         </div>
-                        <div className="col-md-4 bg-dark fixed-right">
+                        <div className="col-md-3 bg-dark fixed-right right-section">
                             <div className="text-light">
-                                <Payment {...this.props} />
+                                {
+                                    this.props.editOrders ?
+                                    <Payments {...this.props} />
+                                    :
+                                    <RegisterCustomer {...this.props}/>
+                                }
                             </div>
                         </div>
                     </div>
@@ -75,6 +81,24 @@ const mapDispatchToProps = (dispatch) => {
         },
         onAddMenu: payload => {
             return dispatch(addNewMenu(payload))
+        },
+        onToggleNav: (payload) => {
+            return dispatch(toggleNav(payload))
+        },
+        onAddOrders: (payload) => {
+            return dispatch(addCustomer(payload))
+        },
+        onEditOrders: payload => {
+            return dispatch(editOrders(payload))
+        },
+        onAddMenu: payload => {
+            return dispatch(addOrdersMenu(payload))
+        },
+        onRemoveOrders: payload => {
+            return dispatch(removeMenus(payload))
+        },
+        onEditCustomer: payload => {
+            return dispatch(editCustomer(payload))
         }
     }
 }

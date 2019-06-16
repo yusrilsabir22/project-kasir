@@ -1,0 +1,32 @@
+.m-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.605);
+    transform: translateY(-100%);
+    margin: auto;
+    padding: 13% 20%;
+    transition: 300ms transform linear;
+    .card {
+        .card-header {
+            position: relative;
+            border-bottom: none;
+            background-color: #fff;
+            .close-button {
+                font-size: 2em;
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                color: #000;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.m-modal-open {
+    transform: translateY(0%);
+    transition: 300ms transform linear;
+}

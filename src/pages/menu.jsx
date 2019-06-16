@@ -22,7 +22,27 @@ export default class MenuOrders extends Component {
       // console.log(menus)
       const mymenu = auth ? menus.map((v,i) => {
         return (
-            <div className="col-3" key={i}>
+            <div className="col-3" key={i} onClick={(e) => {
+              if(this.props.editOrders) {
+                  let index = this.props.menuOrder.findIndex(val => val.id === this.props.dataOrders.id && val.id_makanan === v.id_makanan);
+                  if(this.props.menuOrder[index]) {
+                    alert('Ok')
+                  } else {
+                    let data = {
+                      id: this.props.dataOrders.id,
+                      id_makanan: v.id_makanan,
+                      price: v.harga,
+                      foodName: v.nama,
+                      count: 1
+                    }
+                    this.props.onAddMenu(data)
+                  }
+                
+              } else {
+                alert('Tidak ada pelanggan yang dipilih')
+                this.props.history.push('/pelanggan')
+              }
+            }}>
                 <MenuCard 
                     {...v}
                 />
