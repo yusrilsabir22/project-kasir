@@ -6,15 +6,23 @@ export default class Payment extends Component {
     super(props)
   
     this.state = {
-       menuOrder: []
+       menuOrder: [],
+       total: 0,
+       id_pelanggan: ''
     }
+  }
 
+  componentDidMount() {
+    this.props.onGetAllPesanan()
   }
 
   componentWillReceiveProps(nextProps, nextState) {
     this.setState({
       menuOrder: nextProps.menuOrder
     })
+    if (nextProps.success_update && nextProps.success_pesanan) {
+      window.location.reload()
+    }
   }
 
   removeItems(v) {
@@ -48,11 +56,42 @@ export default class Payment extends Component {
     this.props.onRemoveOrders(this.state.menuOrder)
   }
 
+  savePayment(total) {
+    let arr = []
+    this.state.menuOrder.map((v, i) => {
+      if(v.id_pelanggan === this.props.dataOrders.id_pelanggan) {
+        let d = [`${this.props.dataOrders.id_pelanggan}`, v.id_makanan, v.count]
+        arr.push(d)
+      }
+    })
+    const data = {
+      id_pelanggan: this.props.dataOrders.id_pelanggan,
+      records: arr,
+      total
+    }
+    console.log({
+      id_pelanggan: data.id_pelanggan,
+      records: data.records
+    });
+    this.props.onUpdateCustomers({
+      id_pelanggan: data.id_pelanggan,
+      status: 'belum bayar',
+      bayar: data.total
+    })
+    setTimeout(() => {
+      this.props.onPesanMakanan({
+        id_pelanggan: data.id_pelanggan,
+        records: data.records
+      })
+    }, 2000)
+  }
+
   render() {
     let total = 0;
     const foodData = this.state.menuOrder.map((v, i) => {
-      if(this.props.dataOrders.id == v.id) {
-        total = total + (v.price * v.count);
+      if(this.props.dataOrders.id_pelanggan == v.id_pelanggan) {
+        total = total + (v.harga * v.count)
+        console.log(total)
         return (
           <div className="col-12 d-item-order" key={i}>
             <div className="card">
@@ -74,17 +113,17 @@ export default class Payment extends Component {
               </div>
               <div className="card-body" style={{color: '#000'}}>
                 <span className="index-key">{v.count}</span>
-                <span className="food-name">{v.foodName}</span>
-                <span className="price-item">{splitRupiah(v.price, 'Rp')}</span>
+                <span className="food-name">{v.nama_makanan}</span>
+                <span className="price-item">{splitRupiah(v.harga, 'Rp')}</span>
               </div>
             </div>
           </div>
         )
       }
     })
-    let index = this.props.orders.findIndex(val => val.id === this.props.dataOrders.id);
-    this.props.orders[index].total = total
-    this.props.onEditCustomer(this.props.orders)
+    let index = this.props.customers.findIndex(val => val.id_pelanggan === this.props.dataOrders.id_pelanggan);
+    this.props.customers[index].bayar = total
+    this.props.onEditCustomer(this.props.customers)
     return (
       <Fragment>
         <div className="m-payment">
@@ -92,12 +131,12 @@ export default class Payment extends Component {
             <div className="col-md-7">
               <span className="text-secondary">Order Number</span>
               <br />
-              <span className="text-white">{this.props.dataOrders.id}</span>
+              <span className="text-white">{this.props.dataOrders.id_pelanggan}</span>
             </div>
             <div className="col-md-5">
               <span className="text-secondary">Name</span>
               <br />
-              <span className="text-white">{this.props.dataOrders.name}</span>
+              <span className="text-white">{this.props.dataOrders.nama}</span>
             </div>
           </div>
           <div className="row justify-content-center text-center list-order-item">
@@ -116,7 +155,7 @@ export default class Payment extends Component {
             <div className="col-5">
               <button className="btn btn-success">PURCHASE</button>
             </div>
-            <div className="col-3">
+            <div className="col-3" onClick={this.savePayment.bind(this, total)}>
               <button className="btn btn-secondary">SAVE</button>
             </div>
           </div>

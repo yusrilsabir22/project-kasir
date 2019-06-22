@@ -1,4 +1,4 @@
-import { SIGN_IN, AUTH_SUCCESS, CHECK_AUTH, GET_MENUS, ADD_MENU, ORDERS_MENUS, EDIT_TYPES, ADD_CUSTOMER, REMOVE_MENUS, EDIT_CUSTOMER } from "../types";
+import { SIGN_IN, AUTH_SUCCESS, CHECK_AUTH, GET_MENUS, ADD_MENU, ORDERS_MENUS, EDIT_TYPES, ADD_CUSTOMER, REMOVE_MENUS, EDIT_CUSTOMER, PESAN_MAKANAN, GET_CUSTOMERS, UPDATE_CUSTOMERS, GET_ALL_PESANAN, ALL_ORDERS, EDIT_MENU, SEND_MENU } from "../types";
 
 export const signIn = (payload) => {
     return {
@@ -56,7 +56,7 @@ export const editOrders = payload => {
 
 export const addOrdersMenu = payload => {
     return {
-        type: ORDERS_MENUS,
+        type: ALL_ORDERS,
         payload
     }
 }
@@ -71,6 +71,47 @@ export const removeMenus = (payload) => {
 export const editCustomer = payload => {
     return {
         type: EDIT_CUSTOMER,
+        payload
+    }
+}
+
+export const pesanMakanan = payload => {
+    return {
+        type: PESAN_MAKANAN,
+        payload
+    }
+}
+
+export const getCustomers = payload => {
+    return {
+        type: GET_CUSTOMERS,
+        payload
+    }
+}
+
+export const updateCustomers = payload => {
+    return {
+        type: UPDATE_CUSTOMERS,
+        payload
+    }
+}
+
+export const getAllPesanan = () => {
+    return {
+        type: GET_ALL_PESANAN
+    }
+}
+
+export const editMenus = payload => {
+    return {
+        type: EDIT_MENU,
+        payload
+    }
+}
+
+export const sendEditMenu = payload => {
+    return {
+        type: SEND_MENU,
         payload
     }
 }

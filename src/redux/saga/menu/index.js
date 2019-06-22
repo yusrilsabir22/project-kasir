@@ -17,9 +17,11 @@ function* GetMenu(action) {
 }
 
 function* AddMenu(action) {
+    console.log(action)
     try {
         const {response, error} = yield call(addMenu, action.payload)
         if(response) {
+            console.log(response)
             yield put({type: MENU_NOTIFY, payload: {...response}})
         }
         console.log(error.response.data)

@@ -20,7 +20,7 @@ export default class RegisterCustomer extends Component {
                     </div>
                 </div>
                 <div className={`m-modal${this.state.openModal ? ' m-modal-open' : ''}`} >
-                    <RegisterModal modal={this.state.openModal} addOrder={this.props.onAddOrders} openModal={(v) => {
+                    <RegisterModal onGetCustomers={this.props.onGetCustomers} modal={this.state.openModal} addOrder={this.props.onAddOrders} openModal={(v) => {
                         this.setState({
                             openModal: v
                         })

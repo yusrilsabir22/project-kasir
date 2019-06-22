@@ -15,3 +15,11 @@ export const splitRupiah = (angka, prefix) => {
     return prefix == undefined ? rupiah : (rupiah ? prefix + rupiah : '');
     // return rupiah
 }
+
+export const formData = (object) => {
+    const form = new FormData()
+    for (let [key, value] of Object.entries(object)) {
+        form.append(key, value)
+    }
+    return form
+}

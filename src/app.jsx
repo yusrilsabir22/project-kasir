@@ -2,7 +2,24 @@ import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
 import Payments from './pages/payment';
 import MainRoutes from './routes';
-import { signIn, checkAuth, getAllMenu, addNewMenu, toggleNav, addOrdersMenu, editOrders, addCustomer, removeMenus, editCustomer } from './redux/actions';
+import { 
+    signIn, 
+    checkAuth, 
+    getAllMenu, 
+    addNewMenu, 
+    toggleNav, 
+    addOrdersMenu, 
+    editOrders, 
+    addCustomer, 
+    removeMenus, 
+    editCustomer, 
+    getCustomers, 
+    updateCustomers, 
+    getAllPesanan, 
+    pesanMakanan,
+    editMenus,
+    sendEditMenu
+} from './redux/actions';
 import AdminPage from './pages/admin';
 import MenuOrders from './pages/menu';
 import RegisterCustomer from './components/register.customer';
@@ -64,7 +81,9 @@ class App extends Component {
 const mapStateToProps = (state) => {
     return {
         ...state.userReducers,
-        ...state.menuReducers
+        ...state.menuReducers,
+        ...state.customersReducers,
+        ...state.pesananReducers
     }
 }
 
@@ -79,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
         onGetMenu: () => {
             return dispatch(getAllMenu())
         },
-        onAddMenu: payload => {
+        onAddMenus: payload => {
             return dispatch(addNewMenu(payload))
         },
         onToggleNav: (payload) => {
@@ -99,6 +118,24 @@ const mapDispatchToProps = (dispatch) => {
         },
         onEditCustomer: payload => {
             return dispatch(editCustomer(payload))
+        },
+        onGetCustomers: () => {
+            return dispatch(getCustomers())
+        },
+        onUpdateCustomers: (payload) => {
+            return dispatch(updateCustomers(payload))
+        },
+        onGetAllPesanan: () => {
+            return dispatch(getAllPesanan())
+        },
+        onPesanMakanan: payload => {
+            return dispatch(pesanMakanan(payload))
+        },
+        onEditMenu: payload => {
+            return dispatch(editMenus(payload))
+        },
+        onSendMenu: payload => {
+            return dispatch(sendEditMenu(payload))
         }
     }
 }

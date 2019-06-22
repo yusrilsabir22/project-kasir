@@ -16,7 +16,10 @@ export default withRouter(class Sidebars extends Component {
                     </div>
                 </div>
                 <div className="p-2">
-                    <button className="btn btn-danger">Logout</button>
+                    <button className="btn btn-danger" onClick={(e) => {
+                        localStorage.clear()
+                        window.location.reload()
+                    }}>Logout</button>
                 </div>
             </div>
         )

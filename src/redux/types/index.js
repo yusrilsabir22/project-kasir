@@ -3,6 +3,9 @@ export const LOGOUT = "LOGOUT"
 export const AUTH_SUCCESS = "AUTH_SUCCESS"
 export const AUTH_FAILED = "AUTH_FAILED"
 export const CHECK_AUTH = "CHECK_AUTH"
+export const EDIT_MENU = "EDIT_MENU"
+export const SEND_MENU = "SEND_MENU"
+export const MESSAGE_MENU = "MESSAGE_MENU"
 
 export const GET_MENUS = "GET_MENU"
 export const ADD_MENU = "ADD_MENU"
@@ -10,7 +13,19 @@ export const MENU_NOTIFY = "MENU_NOTIFY"
 export const MENUS = "MENUS"
 
 export const ORDERS_MENUS = "ORDERS_MENUS";
+export const ALL_ORDERS = "ALL_ORDERS"
 export const EDIT_TYPES = "EDIT_TYPES";
+
 export const ADD_CUSTOMER = "ADD_CUSTOMER"
+export const CUSTOMER_STATUS = "CUSTOMER_STATUS"
 export const REMOVE_MENUS = "REMOVE_MENUS"
 export const EDIT_CUSTOMER = "EDIT_CUSTOMER"
+export const GET_CUSTOMERS = "GET_CUSTOMERS"
+export const CUSTOMERS = "CUSTOMERS"
+export const UPDATE_CUSTOMERS = "UPDATE_CUSTOMERS"
+export const MESSAGE_CUSTOMERS = "MESSAGE_CUSTOMERS"
+
+export const PESAN_MAKANAN = "PESAN_MAKANAN"
+export const SUCCESS_PESAN_MAKANAN = "SUCCESS_PESAN_MAKANAN"
+export const FAILED_PESAN_MAKANAN = "FAILED_PESAN_MAKANAN"
+export const GET_ALL_PESANAN = "GET_ALL_PESANAN"

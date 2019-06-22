@@ -1,7 +1,6 @@
 import {
-    MENUS, MENU_NOTIFY, ORDERS_MENUS, EDIT_TYPES, ADD_CUSTOMER, REMOVE_MENUS, EDIT_CUSTOMER
+    MENUS, MENU_NOTIFY, ORDERS_MENUS, EDIT_TYPES, REMOVE_MENUS, EDIT_CUSTOMER, CUSTOMER_STATUS, ALL_ORDERS, EDIT_MENU
 } from "../types";
-import MenuOrders from "../../pages/menu";
 
 const initialState = {
     menus: [],
@@ -10,7 +9,10 @@ const initialState = {
     orders: [],
     editOrders: false,
     dataOrders: {},
-    menuOrder: []
+    menuOrder: [],
+    editedMenu: false,
+    editMenu: {},
+    success_send_menu: false
 }
 
 const menuReducers = (state = initialState, action) => {
@@ -37,7 +39,7 @@ const menuReducers = (state = initialState, action) => {
                 dataOrders: action.payload.data
             }
 
-        case ADD_CUSTOMER:
+        case CUSTOMER_STATUS:
             return {
                 ...state,
                 orders: [...state.orders, action.payload]
@@ -47,16 +49,26 @@ const menuReducers = (state = initialState, action) => {
                 ...state,
                 orders: action.payload
             }
-        case ORDERS_MENUS:
+        case ALL_ORDERS:
             return {
                 ...state,
                 menuOrder: [...state.menuOrder, action.payload]
             }
+        case ORDERS_MENUS:
+            return {
+                ...state,
+                menuOrder: action.payload.records
+            }
         case REMOVE_MENUS:
-            
             return {
                 ...state,
                 menuOrder: action.payload
+            }
+        case EDIT_MENU:
+            return {
+                ...state,
+                editedMenu: action.payload.onEditMenu,
+                editMenu: action.payload.editMenu
             }
         default:
             return state

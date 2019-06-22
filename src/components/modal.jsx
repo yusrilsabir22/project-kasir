@@ -8,10 +8,14 @@ export default class RegisterModal extends Component {
     addOrders(e) {
         e.preventDefault()
         if(this.state.nama != '') {
-            this.props.addOrder({name: this.state.nama, id: new Date().getTime(), total: 0})
+            this.props.addOrder({
+                nama: this.state.nama, bayar: 0, status: 'belum bayar'})
             this.setState({
                 nama: ''
             })
+            setTimeout(() => {
+                this.props.onGetCustomers()
+            }, 1000)
             this.props.openModal(false)
         } else {
             alert('Silahkan masukkan nama pelanggan')

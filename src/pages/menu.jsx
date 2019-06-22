@@ -15,7 +15,7 @@ export default class MenuOrders extends Component {
   componentWillReceiveProps(nextProps, nextState) {
     this.setState({
       menus: nextProps.menus
-    })
+    });
   }
   render() {
       const {menus,auth} = this.props
@@ -24,20 +24,25 @@ export default class MenuOrders extends Component {
         return (
             <div className="col-3" key={i} onClick={(e) => {
               if(this.props.editOrders) {
-                  let index = this.props.menuOrder.findIndex(val => val.id === this.props.dataOrders.id && val.id_makanan === v.id_makanan);
+                  let index = this.props.menuOrder.findIndex(val => val.id_pelanggan === this.props.dataOrders.id_pelanggan && val.id_makanan === v.id_makanan);
                   if(this.props.menuOrder[index]) {
                     alert('Ok')
                   } else {
                     let data = {
-                      id: this.props.dataOrders.id,
+                      id_pelanggan: this.props.dataOrders.id_pelanggan,
                       id_makanan: v.id_makanan,
-                      price: v.harga,
-                      foodName: v.nama,
+                      harga: v.harga,
+                      nama_makanan: v.nama,
                       count: 1
                     }
                     this.props.onAddMenu(data)
                   }
                 
+              } else if(this.props.admin) {
+                  this.props.onEditMenu({
+                    onEditMenu: true,
+                    editMenu: v
+                  })
               } else {
                 alert('Tidak ada pelanggan yang dipilih')
                 this.props.history.push('/pelanggan')
@@ -45,6 +50,7 @@ export default class MenuOrders extends Component {
             }}>
                 <MenuCard 
                     {...v}
+                    admin={this.props.admin}
                 />
             </div>
         )

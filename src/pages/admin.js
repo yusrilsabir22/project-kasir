@@ -4,9 +4,10 @@ export default class AdminPage extends Component {
   state = {
       nama: '',
       harga: 0,
-      stok: 0,
       tipe: 'makanan',
-      img: ''
+      img: '',
+      imageUrl: '',
+      id_makanan: ''
   }
   onChange(e) {
       console.log(e.target.name)
@@ -17,11 +18,29 @@ export default class AdminPage extends Component {
   }
   onChangeFile(e) {
       this.setState({
-          img: URL.createObjectURL(e.target.files[0])
+          img: URL.createObjectURL(e.target.files[0]),
+          imageUrl: e.target.files[0]
       })
   }
 
+
   componentWillReceiveProps(nextProps, nextState) {
+    if(nextProps.editedMenu) {
+      const {
+        id_makanan,
+        img,
+        nama,
+        tipe,
+        harga
+      } = nextProps.editMenu
+      this.setState({
+        id_makanan,
+        imageUrl: img,
+        nama,
+        tipe,
+        harga
+      })
+    }
       if(!!nextProps.message.affectedRows) {
         if (nextProps.message.affectedRows === 1) {
 
@@ -31,14 +50,21 @@ export default class AdminPage extends Component {
         }
       }
   }
+
+  tambahMakanan() {
+    const {nama, harga, stok, tipe, imageUrl} = this.state
+          this.props.onAddMenus({nama, harga, stok, tipe, imageUrl})
+          this.setState({img: '', nama: '', harga: 0, stok: 0, tipe: 'makanan'})
+          setTimeout(() => {
+            this.props.onGetMenu()
+          }, 1000)
+  }
+
   render() {
     
     return (
         <React.Fragment>
       <form onSubmit={(e) => {
-          const {nama, harga, stok, tipe} = this.state
-          this.setState({img: '', nama: '', harga: 0, stok: 0, tipe: 'makanan'})
-          this.props.onAddMenu({nama, harga, stok, tipe})
           e.preventDefault()
       }}>
         <div className="text-center">Tambah Data Makanan</div>
@@ -52,10 +78,6 @@ export default class AdminPage extends Component {
             <input type="number" id="harga" className="form-control" value={this.state.harga} name="harga" onChange={this.onChange.bind(this)} />
           </div>
           <div className="form-group">
-            <label htmlFor="stok">Stok</label>
-            <input type="number" className="form-control" value={this.state.stok} name="stok" id="stok" onChange={this.onChange.bind(this)} />
-          </div>
-          <div className="form-group">
             <select name="tipe" id="tipe" className="form-control" value={this.state.tipe} onChange={this.onChange.bind(this)}>
                 <option value="makanan">Makanan</option>
                 <option value="minuman">Minuman</option>
@@ -63,11 +85,21 @@ export default class AdminPage extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="exampleFormControlFile1"></label>
-            <img src={this.state.img} alt="" style={{width: '100px'}}/>
+            <img src={ this.state.img } alt="" style={{width: '100px'}}/>
             <input type="file" className="form-control-file" id="exampleFormControlFile1" onChange={this.onChangeFile.bind(this)} />
           </div>
           <div className="form-group">
-            <button className="form-control btn btn-success">Tambahkan</button>
+            <div className="row">
+              <div className="col-4">
+                <button className="form-control btn btn-success" onClick={this.tambahMakanan.bind(this)}>Tambahkan</button>
+              </div>
+              <div className="col-4">
+                <button className="form-control btn btn-secondary">Ubah</button>
+              </div>
+              <div className="col-4">
+                <button className="form-control btn btn-danger">Hapus</button>
+              </div>
+            </div>
           </div>
       </form>
         <br/><br/><br/><br/>
